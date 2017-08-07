@@ -51,6 +51,12 @@ libpython2.7-dev libffi-dev python-pip python-dev virtualenv gcc
 pip install --upgrade pip
 ```
 
+#### Activation NTP
+On décommente la ligne concernant les serveurs NTP dans : `/etc/systemd/timesyncd.conf`. Puis on démarre le service.
+
+`sudo systemctl start systemd-timesyncd.service; sudo systemctl enable systemd-timesyncd.service`
+
+
 ## Installation mailcow
 Ici on devrait retrouver les mêmes étapes que définies dans la [doc en ligne de Mailcow](https://github.com/andryyy/mailcow/blob/master/README.md). On réécrit au cas où la doc viendrait à changer.
 
@@ -122,6 +128,7 @@ ufw allow out 22/tcp
 ufw allow out 53/udp
 ufw allow out 20/tcp
 ufw allow out 21/tcp
+ufw allow out 123
 ufw allow out 43/tcp # whois
 # Backup tasks to NAS
 ufw allow out 4222/tcp
